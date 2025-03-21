@@ -9,6 +9,9 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: 'page', mode: 'out-in' }
   },
+  tailwindcss: {
+    configPath: '~/tailwind.config.js',
+  },
   experimental: {
     viewTransition: true
   },
@@ -20,3 +23,5 @@ export default defineNuxtConfig({
     ],
   },
 })
+
+

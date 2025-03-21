@@ -5,21 +5,7 @@
 </template>
 
 <script setup lang="ts">
-// Check if the browser supports the View Transitions API
-const supportsViewTransitions = typeof document !== 'undefined' && 'startViewTransition' in document;
-
-// Custom router middleware for transitions
-const router = useRouter();
-router.beforeEach((to, from, next) => {
-	if (supportsViewTransitions && !document.startViewTransition) {
-		// @ts-ignore - TypeScript doesn't know about startViewTransition yet
-		document.startViewTransition(() => {
-			next();
-		});
-	} else {
-		next();
-	}
-});
+// Page transitions are defined in the layout
 </script>
 
 <style>
@@ -39,7 +25,7 @@ router.beforeEach((to, from, next) => {
 	transform: translateY(-20px);
 }
 
-/* Ensure animations are disabled for users who prefer reduced motion */
+/* Ensure animations respect user preferences */
 @media (prefers-reduced-motion: reduce) {
 	*,
 	::before,
