@@ -1,3 +1,28 @@
+<script setup lang="ts">
+import type { Building } from '~/types/building';
+import { useRouter } from 'vue-router';
+
+interface BuildingProps {
+	building: Building
+	type: string
+}
+
+const props = defineProps<BuildingProps>();
+const router = useRouter();
+const cardElement = ref(null);
+
+const navigateToBuilding = () => {
+	if (cardElement.value) {
+		const card = cardElement.value as HTMLElement;
+		card.style.transform = 'scale(1.1)';
+		card.style.opacity = '0';
+	}
+	setTimeout(() => {
+		router.push(`/${props.type}/${props.building.id}`);
+	}, 50);
+};
+</script>
+
 <template>
 	<div class="building-card">
 		<div
@@ -26,30 +51,7 @@
 	</div>
 </template>
 
-<script setup lang="ts">
-import type { Building } from '~/types/building';
-import { useRouter } from 'vue-router';
 
-interface BuildingProps {
-	building: Building
-}
-
-const props = defineProps<BuildingProps>();
-const router = useRouter();
-const cardElement = ref(null);
-
-const navigateToBuilding = () => {
-	if (cardElement.value) {
-		const card = cardElement.value as HTMLElement;
-		card.style.transform = 'scale(1.1)';
-		card.style.opacity = '0';
-	}
-
-	setTimeout(() => {
-		router.push(`/building/${props.building.id}`);
-	}, 300);
-};
-</script>
 
 <style scoped>
 .building-card {

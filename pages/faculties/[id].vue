@@ -1,21 +1,8 @@
-<script setup lang="ts">
-import { useRoute } from 'vue-router';
-import { useBuildings } from '~/composables/useBuildings';
-
-const route = useRoute();
-const { getBuildingById } = useBuildings();
-
-const building = computed(() => {
-	const id = parseInt(route.params.id as string);
-	return getBuildingById(id);
-});
-</script>
-
 <template>
 	<div class="min-h-screen bg-[#020c1b] text-[#ccd6f6]">
 		<div class="container mx-auto px-4 py-12">
 			<NuxtLink
-				to="/"
+				to="/faculties"
 				class="inline-flex items-center text-[#728098] hover:text-[#b0c7e6] mb-8 transition-colors duration-200"
 			>
 				<Icon name="mdi:arrow-left" class="w-5 h-5 mr-2" />
@@ -76,3 +63,15 @@ const building = computed(() => {
 	</div>
 </template>
 
+<script setup lang="ts">
+import { useRoute } from 'vue-router';
+import { useBuildings } from '~/composables/useBuildings';
+
+const route = useRoute();
+const { getBuildingById } = useBuildings();
+
+const building = computed(() => {
+	const id = parseInt(route.params.id as string);
+	return getBuildingById(id);
+});
+</script>

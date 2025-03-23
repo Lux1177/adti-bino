@@ -10,6 +10,7 @@
 					v-for="building in buildings"
 					:key="building.id"
 					:building="building"
+					type="faculties"
 				/>
 			</div>
 		</div>

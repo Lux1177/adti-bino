@@ -2,11 +2,12 @@
 	<div class="container mx-auto px-4 py-12">
 		<h1 class="text-3xl font-bold mb-8 bg-gradient-to-r from-[#52e0c4] to-[#728098] bg-clip-text text-transparent">Бинолар</h1>
 
-		<div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
+		<div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
 			<BuildingCard
-				v-for="building in limitedBuildings"
+				v-for="building in buildings"
 				:key="building.id"
 				:building="building"
+				type="building"
 			/>
 		</div>
 
@@ -23,10 +24,51 @@
 </template>
 
 <script setup lang="ts">
-const { buildings } = useBuildings();
 
-// Limit to only 4 buildings for the home page
-const limitedBuildings = computed(() => {
-	return buildings.value.slice(0, 4);
-});
+type building = {
+	id: number,
+	name: string,
+	description: string,
+	image: string,
+	location: string,
+}
+
+const buildings:building[] = [
+	{
+		id: 1,
+		name: '1-бино',
+		description: 'Асосий бино',
+		image: '/1-bino.jpg',
+		location: ''
+	},
+	{
+		id: 2,
+		name: '2-бино',
+		description: '2000 ўринлик ўкув бино',
+		image: '/2-bino.jpg',
+		location: ''
+	},
+	{
+		id: 3,
+		name: '3-бино',
+		description: 'Чоргузар',
+		image: '/3-bino.jpg',
+		location: ''
+	},
+	{
+		id: 4,
+		name: 'АДТИ клиникаси',
+		description: 'Ю. Отабеков номли',
+		image: '/adti-klinikasi.jpg',
+		location: ''
+	},
+	{
+		id: 5,
+		name: 'Талабалар турар жойи',
+		description: '',
+		image: '',
+		location: ''
+	},
+]
+
 </script>

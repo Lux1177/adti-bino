@@ -4,7 +4,7 @@ export interface Building {
 	location: string;
 	image: string;
 	description: string;
-	manager: string;
-	head_teacher: string;
-	location_map: string;
+	manager?: string;
+	head_teacher?: string;
+	location_map?: string;
 }
