@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import type { BuildingInfo} from '~/types/building';
+import type { Building } from '~/types/building';
 import { useRouter } from 'vue-router';
 
 interface BuildingProps {
-	building: BuildingInfo
+	building: Building
+	type: string
 }
 
 const props = defineProps<BuildingProps>();
@@ -17,7 +18,7 @@ const navigateToBuilding = () => {
 		card.style.opacity = '0';
 	}
 	setTimeout(() => {
-		router.push(`/building/${props.building.id}`);
+		router.push(`/${props.type}/${props.building.id}`);
 	}, 50);
 };
 </script>
@@ -31,7 +32,7 @@ const navigateToBuilding = () => {
 		>
 			<div class="relative h-32 sm:h-40 md:h-48">
 				<img
-					:src="building.images[0]"
+					:src="building.image"
 					:alt="building.name"
 					class="w-full h-full object-cover"
 				/>
@@ -42,7 +43,8 @@ const navigateToBuilding = () => {
 					{{ building.name }}
 				</h2>
 				<div class="flex items-start text-[#a8b2d1] gap-1">
-					<span class="text-sm sm:text-base line-clamp-2">{{ building.description }}</span>
+					<Icon name="mdi:map-marker" class="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2 mt-1 flex-shrink-0 text-[#52e0c4]" />
+					<span class="text-sm sm:text-base line-clamp-2">{{ building.location }}</span>
 				</div>
 			</div>
 		</div>

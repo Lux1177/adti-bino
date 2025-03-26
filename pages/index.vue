@@ -1,14 +1,60 @@
+<script setup lang="ts">
+
+import type {BuildingInfo} from "~/types/building";
+
+
+const buildings:BuildingInfo[] = [
+	{
+		id: 1,
+		name: '1-бино',
+		description: 'Асосий бино',
+		images: ['/1-bino.jpg'],
+		location_map: ['yandex', 'google'],
+	},
+	{
+		id: 2,
+		name: '2-бино',
+		description: '2000 ўринлик ўкув бино',
+		images: ['/2-bino.jpg'],
+		location_map: ['']
+	},
+	{
+		id: 3,
+		name: '3-бино',
+		description: 'Чоргузар',
+		images: ['/3-bino.jpg'],
+		location_map: ['']
+	},
+	{
+		id: 4,
+		name: 'АДТИ клиникаси',
+		description: 'Ю. Отабеков номли',
+		images: ['/adti-klinikasi.jpg'],
+		location_map: ['']
+	},
+	{
+		id: 5,
+		name: 'Талабалар турар жойи',
+		description: '',
+		images: ['/adti-talabalar-turargi-joy.jpg'],
+		location_map: ['']
+	},
+]
+
+</script>
+
 <template>
 	<div class="container mx-auto px-4 py-12">
 		<h1 class="text-3xl font-bold mb-8 bg-gradient-to-r from-[#52e0c4] to-[#728098] bg-clip-text text-transparent">Бинолар</h1>
 
-		<div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
-			<BuildingCard
-				v-for="building in buildings"
-				:key="building.id"
-				:building="building"
-				type="building"
-			/>
+		<div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 justify-center items-center content-center">
+			<div class="" v-for="building in buildings">
+				<BuildingCard
+					:building="building"
+					:key="building.id"
+					type="building"
+				/>
+			</div>
 		</div>
 
 		<div class="mt-8 text-center">
@@ -23,52 +69,4 @@
 	</div>
 </template>
 
-<script setup lang="ts">
 
-type building = {
-	id: number,
-	name: string,
-	description: string,
-	image: string,
-	location: string,
-}
-
-const buildings:building[] = [
-	{
-		id: 1,
-		name: '1-бино',
-		description: 'Асосий бино',
-		image: '/1-bino.jpg',
-		location: ''
-	},
-	{
-		id: 2,
-		name: '2-бино',
-		description: '2000 ўринлик ўкув бино',
-		image: '/2-bino.jpg',
-		location: ''
-	},
-	{
-		id: 3,
-		name: '3-бино',
-		description: 'Чоргузар',
-		image: '/3-bino.jpg',
-		location: ''
-	},
-	{
-		id: 4,
-		name: 'АДТИ клиникаси',
-		description: 'Ю. Отабеков номли',
-		image: '/adti-klinikasi.jpg',
-		location: ''
-	},
-	{
-		id: 5,
-		name: 'Талабалар турар жойи',
-		description: '',
-		image: '',
-		location: ''
-	},
-]
-
-</script>
