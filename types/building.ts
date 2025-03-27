@@ -3,10 +3,10 @@ export interface Building {
 	name: string;
 	location: string;
 	image: string;
-	description: string;
-	manager?: string;
-	head_teacher?: string;
-	location_map?: string;
+	description?: string;
+	manager: string;
+	head_teacher: string;
+	location_map: string;
 }
 
 export interface BuildingInfo {

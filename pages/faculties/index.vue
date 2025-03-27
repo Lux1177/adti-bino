@@ -1,3 +1,6 @@
+<script setup lang="ts">
+import {faculties} from "~/data/facultiesData";
+</script>
 
 <template>
 		<div class="container mx-auto px-4 py-12">
@@ -7,7 +10,7 @@
 
 			<div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
 				<FacultyCard
-					v-for="building in buildings"
+					v-for="building in faculties"
 					:key="building.id"
 					:building="building"
 					type="faculties"
@@ -16,6 +19,4 @@
 		</div>
 </template>
 
-<script setup lang="ts">
-const { buildings } = useBuildings();
-</script>
+

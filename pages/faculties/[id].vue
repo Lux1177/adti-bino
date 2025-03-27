@@ -1,3 +1,15 @@
+<script setup lang="ts">
+import { useRoute } from 'vue-router';
+import { getBuildingById } from '~/composables/useBuildings';
+
+const route = useRoute();
+
+const building = computed(() => {
+	const id = parseInt(route.params.id as string);
+	return getBuildingById(id);
+});
+</script>
+
 <template>
 	<div class="min-h-screen bg-[#020c1b] text-[#ccd6f6]">
 		<div class="container mx-auto px-4 py-12">
@@ -62,16 +74,3 @@
 		</div>
 	</div>
 </template>
-
-<script setup lang="ts">
-import { useRoute } from 'vue-router';
-import { useBuildings } from '~/composables/useBuildings';
-
-const route = useRoute();
-const { getBuildingById } = useBuildings();
-
-const building = computed(() => {
-	const id = parseInt(route.params.id as string);
-	return getBuildingById(id);
-});
-</script>

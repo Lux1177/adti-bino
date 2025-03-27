@@ -1,16 +1,12 @@
-import { ref } from 'vue';
-import type { Building } from '~/types/building';
-import buildingsData from '~/data/buildings.json';
+import {buildings} from "~/data/buildingsData";
+import {faculties} from "~/data/facultiesData";
 
-export const useBuildings = () => {
-	const buildings = ref<Building[]>(buildingsData.buildings);
+export const getBuildingById = (id: number, type:string="faculty") => {
+		if(type == 'building') {
+			return buildings.find(b => b.id === id);
+		} else {
+			return faculties.find(b => b.id === id);
+		}
+}
 
-	const getBuildingById = (id: number) => {
-		return buildings.value.find(b => b.id === id);
-	};
 
-	return {
-		buildings,
-		getBuildingById
-	};
-};

@@ -9,7 +9,7 @@
 </script>
 
 <style>
-/* Base transitions */
+
 .page-enter-active,
 .page-leave-active {
 	transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
